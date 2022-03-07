@@ -1,10 +1,8 @@
 package com.tkn.mybatisplusdemo.test_mybatis_plus.entity;
 
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.util.Date;
-import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -50,18 +48,21 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
+    @TableField( fill = FieldFill.INSERT_UPDATE)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
     /**
      * 逻辑删除（0 未删除、1 删除）
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     @TableLogic(value = "0", delval = "1")
-    private Boolean deleteFlag;
+    private Integer deleteFlag;
 
 
 
