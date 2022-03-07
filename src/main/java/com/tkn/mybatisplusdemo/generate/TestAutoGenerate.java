@@ -1,11 +1,12 @@
 package com.tkn.mybatisplusdemo.generate;
 
-import com.baomidou.mybatisplus.enums.IdType;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 /**
@@ -33,7 +34,9 @@ public class TestAutoGenerate {
     // 重新生成文件时是否覆盖，false 表示不覆盖（可选）
         gc.setFileOverride(false);
     // 配置主键生成策略，此处为 ASSIGN_ID（可选）
-        gc.setIdType(IdType.AUTO);
+        gc.setIdType(IdType.ASSIGN_ID);
+        // 配置日期类型，此处为 ONLY_DATE（可选）
+        gc.setDateType(DateType.ONLY_DATE);
     // 默认生成的 service 会有 I 前缀
         gc.setServiceName("%sService");
             mpg.setGlobalConfig(gc);
@@ -54,9 +57,9 @@ public class TestAutoGenerate {
         // Step:4：包配置
         PackageConfig pc = new PackageConfig();
 // 配置父包名（需要修改）
-        pc.setParent("com.tkn");
+        pc.setParent("com.tkn.mybatisplusdemo");
 // 配置模块名（需要修改）
-        pc.setModuleName("mybatisplusdemo");
+        pc.setModuleName("test_mybatis_plus");
 // 配置 entity 包名
         pc.setEntity("entity");
 // 配置 mapper 包名
@@ -70,7 +73,7 @@ public class TestAutoGenerate {
         // Step5：策略配置（数据库表配置）
         StrategyConfig strategy = new StrategyConfig();
 // 指定表名（可以同时操作多个表，使用 , 隔开）（需要修改）
-        strategy.setInclude("user");
+        strategy.setInclude("test_mybatis_plus_user");
 // 配置数据表与实体类名之间映射的策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
 // 配置数据表的字段与实体类的属性名之间映射的策略
